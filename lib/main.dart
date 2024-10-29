@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ukk_kasir/pages/admin/navbar.dart';
+import 'package:ukk_kasir/pages/cashierpage.dart';
+import 'package:ukk_kasir/pages/loginpage.dart';
 import 'package:ukk_kasir/splashscreen.dart';
 
 void main() {
@@ -15,7 +18,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'App Fluterku',
-      home: SplashScreen(),
+      home: SplashScreenPage(),
+      routes: {
+        '/admin': (context) => MyHomePage(),
+        '/kasir': (context) => kasir(),
+        '/login': (context) => LoginPage(),
+      },
     );
   }
 }

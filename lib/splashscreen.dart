@@ -1,32 +1,42 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:ukk_kasir/loginpage.dart';
+import 'package:ukk_kasir/pages/create_account.dart';
+import 'package:ukk_kasir/pages/loginpage.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SplashScreenPage extends StatefulWidget {
+  const SplashScreenPage({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  _SplashScreenPageState createState() => _SplashScreenPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
+    openSplashScreen();
+  }
+
+  openSplashScreen() async {
+    var durasiSplash = const Duration(seconds: 2);
+
+    return Timer(durasiSplash, () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
+        return LoginPage();
+      }));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.sizeOf(context);
-    return Container(
-      height: size.height,
-      width: size.width,
-      color: Colors.white,
-      child: Center(
-        child: Image.asset("images/logo.png", width: size.width - 200),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Image.asset(
+          'images/logo.png',
+          width: 200,
+          height: 200,
+        ),
       ),
     );
   }
